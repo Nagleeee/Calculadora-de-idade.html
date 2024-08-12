@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Anos Restantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Anos Restantes</h1>
+        <!-- Formulário para entrada do usuário -->
+        <form id="userForm">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <label for="age">Idade:</label>
+            <input type="number" id="age" name="age" required min="0">
+            <br><br>
+            <input type="button" value="Calcular" onclick="calculateYears()">
+        </form>
+
+        <!-- Área para exibir o resultado -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <!-- JavaScript para manipular a lógica -->
+    <script>
+        // Função que realiza o cálculo e exibe o resultado
+        function calculateYears() {
+            // Obtém os valores dos campos do formulário
+            var name = document.getElementById('name').value;
+            var age = parseInt(document.getElementById('age').value);
+            
+            // Verifica se os campos estão preenchidos corretamente
+            if (!name || isNaN(age)) {
+                document.getElementById('result').innerText = "Por favor, preencha todos os campos corretamente.";
+                return;
+            }
+
+            // Calcula os anos restantes para completar 100 anos
+            var yearsTo100 = 100 - age;
+
+            // Exibe a saudação personalizada e a quantidade de anos restantes
+            var resultMessage = `Olá, ${name}! Faltam ${yearsTo100} anos para você completar 100 anos.`;
+            document.getElementById('result').innerText = resultMessage;
+        }
+    </script>
+</body>
+</html>
